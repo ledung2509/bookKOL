@@ -32,6 +32,23 @@ public class KolAvailabilityController {
         return ResponseEntity.ok(availabilityService.getKolSchedule(kolId, start, end));
     }
 
+    @PreAuthorize("hasAuthority('KOL')")
+    @PostMapping("/{kolId}/schedule")
+    public ResponseEntity<ApiResponse<KolAvailabilityDTO>> createKolAvailability(
+            @PathVariable UUID kolId,
+            @RequestBody KolAvailabilityDTO availabilityDTO
+    ) {
+
+        return ResponseEntity.ok(availabilityService.createKolSchedule(kolId,availabilityDTO));
+    }
+
+    @PreAuthorize("hasAuthority('KOL')")
+    @GetMapping("time-line/{availabilityId}")
+    public ResponseEntity<ApiResponse<KolAvailabilityDTO>> getKolAvailabilityById(
+            @PathVariable UUID availabilityId
+    ) {
+        return ResponseEntity.ok(availabilityService.getKolAvailabilityById(availabilityId));
+    }
 }
 
 

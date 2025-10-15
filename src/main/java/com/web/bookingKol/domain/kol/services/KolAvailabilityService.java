@@ -11,6 +11,10 @@ import java.util.UUID;
 
 public interface KolAvailabilityService {
     ApiResponse<List<KolAvailabilityDTO>> getKolSchedule(UUID userId, OffsetDateTime start, OffsetDateTime end);
+
+    ApiResponse<KolAvailabilityDTO> createKolSchedule(UUID kolId, KolAvailabilityDTO availabilityDTO);
+
+    ApiResponse<KolAvailabilityDTO> getKolAvailabilityById(UUID availabilityId);
 }
 
 

@@ -25,21 +25,5 @@ public interface KolAvailabilityRepository extends JpaRepository<KolAvailability
             @Param("start") OffsetDateTime start,
             @Param("end") OffsetDateTime end
     );
-
-    @Query("""
-                SELECT CASE WHEN COUNT(ka) > 0 THEN TRUE ELSE FALSE END
-                FROM KolAvailability ka
-                WHERE ka.kol.id = :kolId
-                  AND ka.status = 'AVAILABLE'
-                  AND :start >= ka.startAt
-                  AND :end <= ka.endAt
-            """)
-    boolean isKolAvailabilityInRange(
-            @Param("kolId") UUID kolId,
-            @Param("start") OffsetDateTime start,
-            @Param("end") OffsetDateTime end
-    );
-
-
 }
 
